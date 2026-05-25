@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap");
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-serif: "Instrument Serif", serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens — OLIVÉTO Firenze: oliva, terracotta, avorio */
+  --color-bosco: var(--bosco);
+  --color-oliva: var(--oliva);
+  --color-terra: var(--terra);
+  --color-avorio: var(--avorio);
+  --color-pietra: var(--pietra);
+  --color-inchiostro: var(--inchiostro);
+
+  /* Backwards-compatible aliases (old tokens still used in other pages) */
+  --color-espresso: var(--bosco);
+  --color-cream: var(--avorio);
+  --color-bone: var(--pietra);
+  --color-olive: var(--oliva);
+  --color-brass: var(--terra);
+  --color-walnut: var(--oliva);
+  --color-ink: var(--inchiostro);
+}
+
+:root {
+  /* OLIVÉTO — verde oliva profondo + terracotta toscana + avorio */
+  --bosco: oklch(0.22 0.035 145);          /* verde bosco profondo */
+  --oliva: oklch(0.42 0.06 130);           /* oliva foresta */
+  --terra: oklch(0.62 0.13 45);            /* terracotta toscana */
+  --avorio: oklch(0.955 0.018 85);         /* avorio caldo */
+  --pietra: oklch(0.9 0.02 80);            /* pietra calcarea */
+  --inchiostro: oklch(0.18 0.02 145);      /* inchiostro verde-nero */
+
+  --background: var(--avorio);
+  --foreground: var(--inchiostro);
+  --card: oklch(0.98 0.012 85);
+  --card-foreground: var(--inchiostro);
+  --popover: var(--avorio);
+  --popover-foreground: var(--inchiostro);
+  --primary: var(--bosco);
+  --primary-foreground: var(--avorio);
+  --secondary: var(--pietra);
+  --secondary-foreground: var(--bosco);
+  --muted: oklch(0.93 0.018 85);
+  --muted-foreground: oklch(0.42 0.03 130);
+  --accent: var(--terra);
+  --accent-foreground: var(--avorio);
+  --destructive: oklch(0.5 0.18 25);
+  --destructive-foreground: var(--avorio);
+  --border: oklch(0.84 0.022 90);
+  --input: oklch(0.88 0.02 90);
+  --ring: var(--terra);
+  --radius: 0px;
+}
+
+.dark {
+  --background: oklch(0.14 0.02 145);
+  --foreground: var(--avorio);
+  --card: oklch(0.18 0.025 145);
+  --card-foreground: var(--avorio);
+  --primary: var(--avorio);
+  --primary-foreground: var(--bosco);
+  --secondary: oklch(0.22 0.025 145);
+  --secondary-foreground: var(--avorio);
+  --muted: oklch(0.2 0.02 145);
+  --muted-foreground: oklch(0.72 0.02 90);
+  --accent: var(--terra);
+  --accent-foreground: var(--avorio);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(at 15% 0%, oklch(0.9 0.04 90 / 0.55), transparent 55%),
+      radial-gradient(at 90% 100%, oklch(0.85 0.08 50 / 0.28), transparent 55%);
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    color: var(--color-bosco);
+  }
+  .font-display { font-family: var(--font-display); }
+  .font-serif-display {
+    font-family: var(--font-serif);
+    letter-spacing: 0.02em;
+  }
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--color-oliva);
+    font-weight: 500;
+  }
+  .rule {
+    display: inline-block;
+    height: 1px;
+    width: 2.5rem;
+    background: var(--color-terra);
+    vertical-align: middle;
+    margin: 0 0.75rem;
+  }
+  .drop-cap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5.2rem;
+    line-height: 0.85;
+    float: left;
+    padding: 0.35rem 0.7rem 0 0;
+    color: var(--color-terra);
+    font-style: italic;
+  }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.1;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .marquee-track {
+    display: inline-flex;
+    gap: 3rem;
+    animation: marquee 38s linear infinite;
+    white-space: nowrap;
+  }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slow-zoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-fade-up { animation: fade-up 1s ease-out both; }
+.animate-slow-zoom { animation: slow-zoom 14s ease-out both; }
